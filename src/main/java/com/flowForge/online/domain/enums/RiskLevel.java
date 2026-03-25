@@ -1,4 +1,4 @@
-package com.flowForge.online.domain.enums;
+package com.flowforge.online.domain.enums;
 
 public enum RiskLevel {
     LOW,

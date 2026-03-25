@@ -1,4 +1,4 @@
-package com.flowForge.online;
+package com.flowforge.online;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
