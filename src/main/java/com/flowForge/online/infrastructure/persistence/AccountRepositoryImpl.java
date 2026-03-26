@@ -3,7 +3,6 @@ package com.flowforge.online.infrastructure.persistence;
 import com.flowforge.online.application.mapper.AccountMapper;
 import com.flowforge.online.domain.model.Account;
 import com.flowforge.online.domain.repository.IAccountRepository;
-import com.flowforge.online.infrastructure.persistence.entity.AccountEntity;
 import com.flowforge.online.infrastructure.persistence.repository.IAccountJpaRepository;
 import org.springframework.stereotype.Repository;
 
