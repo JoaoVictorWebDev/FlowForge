@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@AllArgsConstructor
 @RequestMapping("/account")
 @RestController
 public class AccountController {
 
     private final CreateAccountUseCase createAccountUseCase;
+
+    public AccountController(CreateAccountUseCase createAccountUseCase) {
+        this.createAccountUseCase = createAccountUseCase;
+    }
 
     @PostMapping
     public ResponseEntity<CreateAccountResponse> createAccount(@RequestBody CreateAccountRequest request){

@@ -8,7 +8,9 @@ import com.flowforge.online.domain.model.Account;
 import com.flowforge.online.domain.repository.IAccountRepository;
 import com.flowforge.online.domain.repository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateAccountUseCase {
 
     @Autowired
