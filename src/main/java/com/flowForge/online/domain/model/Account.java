@@ -21,4 +21,10 @@ public class Account {
 
     private Instant createdAt;
 
+    public Account(){
+        this.id = UUID.randomUUID();
+    }
+
+    public Account(UUID uuid, String s, AccountStatus accountStatus, Instant now) {
+    }
 }

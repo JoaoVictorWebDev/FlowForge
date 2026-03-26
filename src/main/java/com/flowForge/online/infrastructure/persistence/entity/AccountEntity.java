@@ -1,9 +1,8 @@
-package com.flowforge.online.infrastructure.persistence;
+package com.flowforge.online.infrastructure.persistence.entity;
 
 import com.flowforge.online.domain.enums.AccountStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
@@ -18,7 +17,8 @@ public class AccountEntity {
     @Id
     private UUID id;
 
-    @Column(name="customer_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
     private UUID customerId;
 
     @Column(name="account_number")

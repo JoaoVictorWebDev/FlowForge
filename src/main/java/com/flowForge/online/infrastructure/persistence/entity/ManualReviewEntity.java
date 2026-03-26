@@ -1,4 +1,4 @@
-package com.flowforge.online.infrastructure.persistence;
+package com.flowforge.online.infrastructure.persistence.entity;
 
 import com.flowforge.online.domain.enums.ReviewDecision;
 import jakarta.persistence.*;

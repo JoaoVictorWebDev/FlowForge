@@ -1,8 +1,7 @@
 package com.flowforge.online.application.mapper;
 
 import com.flowforge.online.domain.model.Customer;
-import com.flowforge.online.infrastructure.persistence.AccountEntity;
-import com.flowforge.online.infrastructure.persistence.CustomerEntity;
+import com.flowforge.online.infrastructure.persistence.entity.CustomerEntity;
 
 public class CustomerMapper {
 
