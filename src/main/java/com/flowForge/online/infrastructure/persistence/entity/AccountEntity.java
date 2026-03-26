@@ -18,8 +18,8 @@ public class AccountEntity {
     private UUID id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private UUID customerId;
+    @JoinColumn(name = "customer_id", nullable = false, unique = true)
+    private CustomerEntity customer;
 
     @Column(name="account_number")
     private String accountNumber;

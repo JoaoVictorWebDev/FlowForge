@@ -17,18 +17,17 @@ public class CustomerEntity {
     @Id
     private UUID id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "document_number")
     private String documentNumber;
 
     @Enumerated(EnumType.STRING)
     private CustomerStatus status;
 
-    @Transient
+    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY)
+    private AccountEntity account;
+
     private Instant createdAt;
 }
