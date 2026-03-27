@@ -1,9 +1,7 @@
-name: Java CI
+name: FlowForge CI/CD
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -19,4 +17,45 @@ jobs:
           java-version: 21
 
       - name: Build with Maven
-        run: mvn clean verify
+        run: mvn clean package -DskipTests
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: target/*.jar
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app
+
+      - name: Copy JAR to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          source: "*.jar"
+          target: "/home/ec2-user/app"
+
+      - name: Deploy on EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            export DB_URL=${{ secrets.DB_URL }}
+
+            pkill -f 'java -jar' || true
+
+            nohup java -jar /home/ec2-user/app/*.jar \
+              --spring.profiles.active=hml \
+              > app.log 2>&1 &
