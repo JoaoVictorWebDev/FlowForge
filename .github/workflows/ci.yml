@@ -59,7 +59,3 @@ jobs:
             nohup java -jar /home/ec2-user/app/*.jar \
               --spring.profiles.active=hml \
               > app.log 2>&1 &
-            
-            
-            
-            
