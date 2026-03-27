@@ -3,7 +3,6 @@ package com.flowforge.online.adapters.inbound.rest;
 import com.flowforge.online.application.dto.request.CreateAccountRequest;
 import com.flowforge.online.application.dto.response.CreateAccountResponse;
 import com.flowforge.online.application.usecase.CreateAccountUseCase;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
